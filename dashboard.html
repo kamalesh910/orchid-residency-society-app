@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Society Maintenance Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    crossorigin="anonymous">
+<!-- Include Font Awesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+    rel="stylesheet">
+<style>
+  .btn-custom {
+      border-radius: 50px;
+      font-size: 16px;
+      padding: 15px 25px;
+      transition: all 0.3s ease;
+  }
+
+  .btn-custom:hover {
+      transform: scale(1.1);
+  }
+
+  .btn-active {
+      background-color: #007bff;
+      color: white;
+  }
+
+  .section {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+</style>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Orchid Residency Society App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#ownerDetails">Owner Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rent">Pay Rent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#violations">Violations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#committee">Committee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Sections -->
+    <div class="container mt-5 pt-5">
+        <!-- Owner Details Section -->
+        <section id="ownerDetails" class="mb-5">
+            <h3 class="text-center">Owner Details</h3>
+            <div class="row mt-3">
+                <div class="col-md-6 col-sm-12">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h4 id="ownerName"></h4>
+                            <p id="flatNumber"></p>
+                            <p id="flatStatus"></p>
+                            <p id="contact"></p>
+                            <p id="tenantDetails"></p> <!-- To display tenant details if available -->
+                            <p id="responsibility"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rent Payment Section -->
+        <section id="rent" class="mb-5">
+            <h3 class="text-center">Pay Your Rent</h3>
+            <div class="text-center mb-3">
+                <a href="upi://pay?pa=7709034069@ybl&pn=Flat309&tn=Monthly Rent Payment&am=2000&cu=INR" 
+                   class="btn btn-primary btn-lg">
+                    Pay ₹2000 via PhonePe
+                </a>
+            </div>
+            <form>
+                <div class="mb-3">
+                    <label for="screenshot" class="form-label">Upload Payment Screenshot</label>
+                    <input type="file" id="screenshot" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success w-100">Submit</button>
+            </form>
+        </section>
+
+
+        <div class="text-center mb-4">
+            <!-- Violations Button -->
+            <button class="btn btn-custom btn-primary me-3" id="btnViolations" onclick="toggleVisibility('violations')">
+                <i class="fas fa-exclamation-triangle fa-lg me-2"></i> Violations
+            </button>
+
+            <!-- Committee Button -->
+            <button class="btn btn-custom btn-secondary me-3" id="btnCommittee" onclick="toggleVisibility('committee')">
+                <i class="fas fa-users fa-lg me-2"></i> Committee
+            </button>
+
+            <!-- Services Button -->
+            <button class="btn btn-custom btn-success" id="btnServices" onclick="toggleVisibility('services')">
+                <i class="fas fa-cogs fa-lg me-2"></i> Services
+            </button>
+        </div>
+
+
+        <!-- Violations Section -->
+        <section id="violations" class="mb-5 section">
+            <h3 class="text-center">Violation Log</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Violation</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024-12-01</td>
+                            <td>Improper Parking</td>
+                            <td>Resolved</td>
+                        </tr>
+                        <tr>
+                            <td>2024-12-10</td>
+                            <td>Dustbin Misuse</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Committee Section -->
+        <section id="committee" class="mb-5 section">
+            <h3 class="text-center">Society Committees</h3>
+            <ul class="list-group mt-3">
+                <li class="list-group-item"><strong>1. All Society Garbage:</strong> Shriram Deshpande (Flat 108)</li>
+                <li class="list-group-item"><strong>2. Water and Drainage Tanker Work:</strong> Srinivas (Flat 205)</li>
+                <li class="list-group-item"><strong>3. All Chamber Work:</strong> Kumar Shinde (Flat _)</li>
+                <li class="list-group-item"><strong>4. Watchman and Parking:</strong> Paresh Kale (Flat 105)</li>
+                <li class="list-group-item"><strong>5. Lift:</strong> Suraj Anbhule (Flat 202)</li>
+                <li class="list-group-item"><strong>6. Society Cashier:</strong> Shyam Patil</li>
+                <li class="list-group-item"><strong>7. Terrace Cleaning and Plant Maintenance:</strong> Waghmare (Flat 501)</li>
+                <li class="list-group-item"><strong>8. Maintenance of Lower and Upper Water Tanks:</strong> Devkate (Flat 107)</li>
+                <li class="list-group-item"><strong>9. CCTV Maintenance:</strong> Mayur Nag (Flat 304)</li>
+                <li class="list-group-item"><strong>10. Safety Tank:</strong> Pawar (Flat 309)</li>
+                <li class="list-group-item"><strong>11. Maintenance of All Floor and Parking Lights:</strong> Dudhbate (Flat 303)</li>
+                <li class="list-group-item"><strong>12. Floor Cleaning:</strong> Amar Rajgire (Flat 302)</li>
+            </ul>
+        </section>
+
+           <!-- Services Section -->
+           <div id="services" class="section">
+            <h4>Service Logs</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Last Maintenance</th>
+                        <th>Next Scheduled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Water Tank Cleaning</td>
+                        <td>2024-12-01</td>
+                        <td>2025-01-01</td>
+                    </tr>
+                    <tr>
+                        <td>Lift Inspection</td>
+                        <td>2024-12-05</td>
+                        <td>2025-01-05</td>
+                    </tr>
+                    <tr>
+                        <td>Security Camera Check</td>
+                        <td>2024-12-08</td>
+                        <td>2025-01-08</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-pjw8f+UA7Kw1TIqv1YF3vpe0va4jvAeK9sA4wHs6FUHErB8Lvhvh2+l9B9e6eLLx" 
+    crossorigin="anonymous"></script>
+ <!-- jQuery for Animation and Button Interactions -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // On page load, hide all sections
+        function toggleVisibility(sectionId) {
+            $('.section').fadeOut();
+
+// Show the selected section
+var section = $('#' + sectionId);
+section.fadeToggle();
+
+// Focus on the section by scrolling it into view
+section[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+    <script src="js/app.js"></script>
+</body>
+</html>

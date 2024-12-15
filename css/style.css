@@ -1,0 +1,54 @@
+/* General Styling */
+.btn-custom {
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 15px 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    transform: scale(1.1);
+}
+
+.btn-active {
+    background-color: #007bff;
+    color: white;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 12px;
+}
+
+/* Mobile-Specific Styling */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
