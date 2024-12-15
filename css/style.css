@@ -1,10 +1,4 @@
 /* General Styling */
-.btn-custom {
-    border-radius: 50px;
-    font-size: 16px;
-    padding: 15px 25px;
-    transition: all 0.3s ease;
-}
 
 .btn-custom:hover {
     transform: scale(1.1);
@@ -19,6 +13,62 @@
     display: none;
     animation: fadeIn 0.5s ease-in-out;
 }
+
+        /* Make buttons inline */
+        .btn-custom {
+            display: flex;
+            flex-direction: column; /* Stack icon and text vertically */
+            align-items: center; /* Center text below the icon */
+            justify-content: center;
+            padding: 10px;
+            width: 120px; /* Set fixed width for buttons */
+            text-align: center;
+            margin-right: 15px; /* Add margin for spacing between buttons */
+        }
+
+        /* Increase icon size and add space between icon and text */
+        .btn-custom i {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .btn-custom span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Make buttons stack in mobile view */
+        @media (max-width: 576px) {
+            .text-center {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap; /* Allow buttons to wrap to the next line if space is not enough */
+            }
+
+            .btn-custom {
+                margin-bottom: 15px; /* Space between buttons when wrapped */
+            }
+        }
+
+        /* Ensure buttons are aligned inline for larger screens */
+        @media (min-width: 577px) {
+            .text-center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .btn-custom {
+                flex-direction: column; /* Keep icons on top of text */
+                width: 120px; /* Fixed width for buttons */
+                padding: 12px 20px;
+            }
+
+            .btn-custom i {
+                font-size: 25px; /* Slightly smaller icons on larger screens */
+            }
+
+        }
 
 .rule-section {
     margin-top: 50px;
