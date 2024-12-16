@@ -114,8 +114,11 @@ const societyCommittee = [
 // Event Listener for Login Form Submit
 document.getElementById('loginForm')?.addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent form submission
-
     const flatNumber = document.getElementById('flatNumber').value;
+    if(flatNumber=='admin123'){
+        window.location.href = 'admin.html';
+    }
+    else{
     const ownerDetails = societyCommittee.find(member => member.flatNumber == flatNumber);
 
     if (ownerDetails) {
@@ -127,6 +130,7 @@ document.getElementById('loginForm')?.addEventListener('submit', function(e) {
     } else {
         alert("Flat number not found or invalid. Please try again.");
     }
+}
 });
 
 // Fetch owner details when on the dashboard page

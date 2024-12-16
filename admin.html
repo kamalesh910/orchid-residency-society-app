@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-icon {
+            margin: 10px;
+            padding: 15px;
+            font-size: 14px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-icon i {
+            font-size: 20px;
+            display: block;
+        }
+
+        .btn-icon:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Orchid Residency Society App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#ownerDetails">Owner Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rent">Pay Rent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#violations">Violations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#committee">Committee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Admin Dashboard -->
+<div class="container text-center mt-5" id="adminDashboard">
+    <div id="navigationButtons" class="row">
+        <div class="col-6 col-md-3">
+            <button class="btn-icon" onclick="toggleVisibility('tenantSection')">
+                <i class="fas fa-user-check"></i> Tenant Verification
+            </button>
+        </div>
+        <div class="col-6 col-md-3">
+            <button class="btn-icon" onclick="toggleVisibility('paymentSection')">
+                <i class="fas fa-money-check"></i> Payment Verification
+            </button>
+        </div>
+        <div class="col-6 col-md-3">
+            <button class="btn-icon" onclick="toggleVisibility('violationSection')">
+                <i class="fas fa-exclamation-triangle"></i> Violations
+            </button>
+        </div>
+        <div class="col-6 col-md-3">
+            <button class="btn-icon" onclick="toggleVisibility('rulesSection')">
+                <i class="fas fa-list"></i> Manage Rules
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Tenant Verification Section -->
+<div class="container mt-4 hidden section" id="tenantSection">
+    <h4>Tenant Verification</h4>
+    <div class="filter-buttons">
+        <button class="btn btn-secondary btn-sm" onclick="filterTenants('all')">All</button>
+        <button class="btn btn-success btn-sm" onclick="filterTenants('verified')">Verified</button>
+        <button class="btn btn-danger btn-sm" onclick="filterTenants('unverified')">Unverified</button>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Flat Number</th>
+                <th>Tenant Name</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tenantTable"></tbody>
+    </table>
+</div>
+
+<!-- Payment Verification Section -->
+<div class="container mt-4 hidden section" id="paymentSection">
+    <h4>Payment Verification</h4>
+    <div class="filter-buttons">
+        <button class="btn btn-secondary btn-sm" onclick="filterPayments('all')">All</button>
+        <button class="btn btn-success btn-sm" onclick="filterPayments('verified')">Verified</button>
+        <button class="btn btn-danger btn-sm" onclick="filterPayments('rejected')">Rejected</button>
+        <button class="btn btn-warning btn-sm" onclick="filterPayments('pending')">Pending</button>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Flat Number</th>
+                <th>Payment Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="paymentTable"></tbody>
+    </table>
+</div>
+
+<!-- Violation Section -->
+<div class="container mt-4 hidden section" id="violationSection">
+    <h4>Violations</h4>
+    <form id="addViolationForm" class="mb-3">
+        <div class="mb-3">
+            <label for="violationFlat" class="form-label">Flat Number</label>
+            <input type="text" id="violationFlat" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="violationDetail" class="form-label">Violation Details</label>
+            <textarea id="violationDetail" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="violationPenalty" class="form-label">Penalty Amount</label>
+            <input type="number" id="violationPenalty" class="form-control" required>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="addViolation()">Add Violation</button>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Flat Number</th>
+                <th>Details</th>
+                <th>Penalty</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="violationTable"></tbody>
+    </table>
+</div>
+
+<!-- Rules Section -->
+<div id="admin-dashboard rulesSection" class="container mt-5 section">
+    <h2 class="text-center mb-4">Manage Society Rules</h2>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="rules-table-body">
+            <!-- Rules will be dynamically populated here -->
+        </tbody>
+    </table>
+
+    <!-- Modal for Editing Rules -->
+    <div class="modal fade" id="editRuleModal" tabindex="-1" aria-labelledby="editRuleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editRuleModalLabel">Edit Rule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editRuleForm">
+                        <div class="mb-3">
+                            <label for="ruleTitle" class="form-label">Rule Title</label>
+                            <input type="text" class="form-control" id="ruleTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ruleDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="ruleDescription" rows="4" required></textarea>
+                        </div>
+                        <input type="hidden" id="ruleId">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="mb-3">
+                        <label for="modalInput" class="form-label">Details</label>
+                        <input type="text" class="form-control" id="modalInput">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Predefined Data
+let tenants = [
+    { flatNumber: 101, tenantName: null, contact: null, verified: false },
+    { flatNumber: 102, tenantName: "Jane Doe", contact: "1234567890", verified: true },
+    { flatNumber: 103, tenantName: "John Smith", contact: "9876543210", verified: false }
+];
+let payments = [
+    { flatNumber: 201, amount: 1500, status: "Pending", screenshot: "https://via.placeholder.com/300" },
+    { flatNumber: 202, amount: 2000, status: "Verified", screenshot: "https://via.placeholder.com/300" },
+    { flatNumber: 203, amount: 1000, status: "Rejected", screenshot: "https://via.placeholder.com/300" }
+];
+let violations = [
+    { flatNumber: 101, detail: "Noise Complaint", penalty: 500 },
+    { flatNumber: 102, detail: "Unauthorized Parking", penalty: 1000 }
+];
+// let rules = Array.from({ length: 17 }, (_, i) => ({ id: i + 1, text: `Rule ${i + 1}` }));
+
+// Modal Data
+let currentEditItem = null;
+let currentEditType = null;
+
+// Toggle Visibility of Sections
+function toggleVisibility(sectionId) {
+    $('.section').fadeOut();
+    $(`#${sectionId}`).fadeIn();
+}
+
+// Tenant Management
+function filterTenants(filter) {
+    const table = document.getElementById("tenantTable");
+    table.innerHTML = ""; // Clear the table
+
+    tenants
+        .filter(tenant => 
+            filter === 'all' || 
+            (filter === 'verified' && tenant.verified) || 
+            (filter === 'unverified' && !tenant.verified)
+        )
+        .forEach(tenant => {
+            table.innerHTML += `
+                <tr>
+                    <td>${tenant.flatNumber}</td>
+                    <td>${tenant.tenantName || "Not Verified"}</td>
+                    <td>${tenant.contact || "-"}</td>
+                    <td>${tenant.verified ? "Verified" : "Unverified"}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="editTenant(${tenant.flatNumber})">Edit</button>
+                    </td>
+                </tr>
+            `;
+        });
+}
+
+function editTenant(flatNumber) {
+    currentEditType = 'tenant';
+    currentEditItem = tenants.find(tenant => tenant.flatNumber === flatNumber);
+
+    if (currentEditItem) {
+        document.getElementById("modalInput").value = JSON.stringify({
+            tenantName: currentEditItem.tenantName,
+            contact: currentEditItem.contact
+        });
+        $('#editModal').modal('show');
+    }
+}
+
+// Payment Management
+function filterPayments(filter) {
+    const table = document.getElementById("paymentTable");
+    table.innerHTML = ""; // Clear the table
+
+    payments
+        .filter(payment => filter === 'all' || payment.status.toLowerCase() === filter)
+        .forEach(payment => {
+            table.innerHTML += `
+                <tr>
+                    <td>${payment.flatNumber}</td>
+                    <td>${payment.amount}</td>
+                    <td>${payment.status}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="viewScreenshot('${payment.screenshot}')">View</button>
+                        <button class="btn btn-success btn-sm" onclick="updatePaymentStatus(${payment.flatNumber}, 'Verified')">Verify</button>
+                        <button class="btn btn-danger btn-sm" onclick="updatePaymentStatus(${payment.flatNumber}, 'Rejected')">Reject</button>
+                    </td>
+                </tr>
+            `;
+        });
+}
+
+function viewScreenshot(url) {
+    const win = window.open(url, '_blank');
+    win.focus();
+}
+
+function updatePaymentStatus(flatNumber, status) {
+    const payment = payments.find(p => p.flatNumber === flatNumber);
+    if (payment) {
+        payment.status = status;
+        filterPayments('all'); // Refresh the table
+    }
+}
+
+// Violation Management
+function addViolation() {
+    const flatNumber = document.getElementById("violationFlat").value;
+    const detail = document.getElementById("violationDetail").value;
+    const penalty = document.getElementById("violationPenalty").value;
+
+    if (flatNumber && detail && penalty) {
+        violations.push({ flatNumber, detail, penalty });
+        populateViolations();
+        document.getElementById("addViolationForm").reset(); // Clear the form
+    }
+}
+
+function populateViolations() {
+    const table = document.getElementById("violationTable");
+    table.innerHTML = ""; // Clear the table
+
+    violations.forEach((violation, index) => {
+        table.innerHTML += `
+            <tr>
+                <td>${violation.flatNumber}</td>
+                <td>${violation.detail}</td>
+                <td>${violation.penalty}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="deleteViolation(${index})">Delete</button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function deleteViolation(index) {
+    violations.splice(index, 1);
+    populateViolations();
+}
+
+// Rules Management
+function populateRules() {
+    const table = document.getElementById("rulesTable");
+    table.innerHTML = ""; // Clear the table
+
+    rules.forEach(rule => {
+        table.innerHTML += `
+            <tr>
+                <td>${rule.id}</td>
+                <td>${rule.text}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" onclick="editRule(${rule.id})">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteRule(${rule.id})">Delete</button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function addRule() {
+    const ruleText = document.getElementById("ruleText").value;
+    if (ruleText) {
+        const newRule = { id: rules.length + 1, text: ruleText };
+        rules.push(newRule);
+        populateRules();
+        document.getElementById("addRuleForm").reset(); // Clear the form
+    }
+}
+
+function editRule(ruleId) {
+    currentEditType = 'rule';
+    currentEditItem = rules.find(rule => rule.id === ruleId);
+
+    if (currentEditItem) {
+        document.getElementById("modalInput").value = currentEditItem.text;
+        $('#editModal').modal('show');
+    }
+}
+
+function deleteRule(ruleId) {
+    rules = rules.filter(rule => rule.id !== ruleId);
+    populateRules();
+}
+
+// Modal Save Changes
+document.getElementById("saveChangesBtn").addEventListener("click", () => {
+    const updatedValue = document.getElementById("modalInput").value;
+
+    if (currentEditType === 'tenant' && currentEditItem) {
+        const updatedDetails = JSON.parse(updatedValue);
+        currentEditItem.tenantName = updatedDetails.tenantName;
+        currentEditItem.contact = updatedDetails.contact;
+        currentEditItem.verified = true; // Mark as verified after edit
+        filterTenants('all'); // Refresh the tenant list
+    } else if (currentEditType === 'rule' && currentEditItem) {
+        currentEditItem.text = updatedValue;
+        populateRules(); // Refresh the rules list
+    }
+
+    $('#editModal').modal('hide');
+});
+
+// Initialize Tables
+filterTenants('all');
+filterPayments('all');
+populateViolations();
+populateRules();
+
+
+// Initial Rules Data
+let rules = [
+    {
+        "id": 1,
+        "title": "Spitting and Parking",
+        "description": "No spitting in society areas. A fine of ₹200 for offenders. Vehicles must be parked properly with parking stickers. Improper parking will result in the vehicle’s air being let out and a fine of ₹200."
+    },
+    {
+        "id": 2,
+        "title": "Hawkers and Parcel Collection",
+        "description": "Hawkers are not allowed (e.g., Swiggy, Zomato). Collect parcels at the gate."
+    },
+    {
+        "id": 3,
+        "title": "Rental Agreements",
+        "description": "Rooms must not be rented to boys and girls without a rent agreement. Water supply will be cut off if no agreement is submitted."
+    },
+    {
+        "id": 4,
+        "title": "Water Usage",
+        "description": "Water is supplied by tankers. Turn off taps when going out. Fine of ₹650 for running taps."
+    },
+    {
+        "id": 5,
+        "title": "Shop Owners Maintenance",
+        "description": "Shop owners must pay full maintenance if using water."
+    },
+    {
+        "id": 6,
+        "title": "Parking and Gates",
+        "description": "Do not leave the parking gate open. Action will be taken if left open."
+    },
+    {
+        "id": 7,
+        "title": "Terrace and Laundry",
+        "description": "No clothes should be hung to dry on the terrace."
+    },
+    {
+        "id": 8,
+        "title": "Maid Information",
+        "description": "Maid's visiting time and Aadhaar card should be submitted to the society."
+    },
+    {
+        "id": 9,
+        "title": "Gate Key",
+        "description": "Request a gate key in writing. If the gate is found open at night and theft occurs, the key will be confiscated."
+    },
+    {
+        "id": 10,
+        "title": "Maintenance Charges",
+        "description": "Maintenance is ₹1500 (responsible residents) and ₹2500 (non-responsible residents). Fines will be imposed for late payment, and water supply will be cut off for non-payment."
+    },
+    {
+        "id": 11,
+        "title": "Complaints",
+        "description": "Any complaints should be submitted in writing and placed in the complaint box."
+    },
+    {
+        "id": 12,
+        "title": "Garbage Disposal",
+        "description": "A fine of ₹500 will be imposed if garbage is thrown from the balcony."
+    },
+    {
+        "id": 13,
+        "title": "Tenant Notification",
+        "description": "Tenants must notify the society 15 days before vacating. Rent agreement must be submitted when a new tenant moves in."
+    },
+    {
+        "id": 14,
+        "title": "Lift Usage",
+        "description": "The lift cannot be used when moving household items."
+    },
+    {
+        "id": 15,
+        "title": "Society Meetings",
+        "description": "Meetings are held every Sunday. A fine of ₹50 will be imposed for non-attendance. If the owner is absent, tenants can attend."
+    },
+    {
+        "id": 16,
+        "title": "Security Personnel",
+        "description": "No arguments with security personnel. Contact the responsible person for issues."
+    },
+    {
+        "id": 17,
+        "title": "Lift Maintenance",
+        "description": "Minor lift issues may take 3 days to repair, while major issues could take longer."
+    }
+]
+
+
+// Function to Populate the Rules Table
+function renderRulesTable() {
+    const tableBody = document.getElementById("rules-table-body");
+    tableBody.innerHTML = ""; // Clear existing rows
+
+    rules.forEach((rule) => {
+        const row = `
+            <tr>
+                <td>${rule.id}</td>
+                <td>${rule.title}</td>
+                <td>${rule.description}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" onclick="openEditModal(${rule.id})">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteRule(${rule.id})">Delete</button>
+                </td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+}
+
+// Function to Open Edit Modal
+function openEditModal(ruleId) {
+    const rule = rules.find(r => r.id === ruleId);
+    if (rule) {
+        document.getElementById("ruleId").value = rule.id;
+        document.getElementById("ruleTitle").value = rule.title;
+        document.getElementById("ruleDescription").value = rule.description;
+        const editModal = new bootstrap.Modal(document.getElementById("editRuleModal"));
+        editModal.show();
+    }
+}
+
+// Function to Save Edited Rule
+document.getElementById("editRuleForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    
+    const ruleId = parseInt(document.getElementById("ruleId").value, 10);
+    const updatedTitle = document.getElementById("ruleTitle").value;
+    const updatedDescription = document.getElementById("ruleDescription").value;
+
+    // Update Rule in the Array
+    const ruleIndex = rules.findIndex(r => r.id === ruleId);
+    if (ruleIndex !== -1) {
+        rules[ruleIndex].title = updatedTitle;
+        rules[ruleIndex].description = updatedDescription;
+    }
+
+    // Close Modal and Re-render Table
+    const editModal = bootstrap.Modal.getInstance(document.getElementById("editRuleModal"));
+    editModal.hide();
+    renderRulesTable();
+});
+
+// Function to Delete Rule
+function deleteRule(ruleId) {
+    rules = rules.filter(rule => rule.id !== ruleId); // Remove the rule by ID
+    renderRulesTable();
+}
+
+// Initial Render of Rules Table
+renderRulesTable();
+
+
+</script>
+</body>
+</html>
