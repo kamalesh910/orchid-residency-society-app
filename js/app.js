@@ -30,6 +30,22 @@ async function fetchRules(){
 
 fetchRules();
 
+function generatePaymentLink(payee,flatNumber,ammount){
+    const paymentContainer = document.getElementById('paymentLink');
+
+    // Clear existing content
+    paymentContainer.innerHTML = '';
+    const paylink = document.createElement('div');
+    paylink.innerHTML = `
+<a href="upi://pay?pa=7709034069@ybl&pn=${flatNumber+" "+payee}&tn=Monthly Rent Flat ${flatNumber} Payment&am=${ammount}&cu=INR"
+                    class="btn btn-primary btn-lg">
+                    Pay ₹${ammount} Maintenance via PhonePe
+                </a>
+`;
+
+paymentContainer.appendChild(paylink);
+}
+
  function loadRules() {
             const rulesContainer = document.getElementById('rulesContainer');
 
@@ -110,6 +126,9 @@ if (window.location.pathname.includes("dashboard.html")) {
         } else if(ownerDetails.flatStatus=='Rented') {
             document.getElementById('tenantDetails').innerHTML = "No tenant information available.";
         }
+        let ammount = ownerDetails.maintenance.pending+ownerDetails.maintenance.penalty;
+        document.getElementById('maintenance').innerHTML = `<strong>Pending ${ownerDetails.maintenance.pending} Penalty: ${ownerDetails.maintenance.penalty} Total Ammount: ${ammount}</strong> `;
+        generatePaymentLink(ownerDetails.ownerName,ownerDetails.flatNumber,ammount);
     } else {
         alert("No owner details found.");
     }
