@@ -6,41 +6,7 @@
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-
-        .btn-icon {
-            margin: 10px;
-            padding: 15px;
-            font-size: 14px;
-            text-align: center;
-            background-color: #007bff;
-            color: white;
-            border-radius: 10px;
-            border: none;
-            width: 100%;
-        }
-
-        .btn-icon i {
-            font-size: 20px;
-            display: block;
-        }
-
-        .btn-icon:hover {
-            background-color: #0056b3;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .filter-buttons {
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -174,7 +140,7 @@
 </div>
 
 <!-- Rules Section -->
-<div id="admin-dashboard rulesSection" class="container mt-5 section">
+<div class="container mt-4 hidden section" id="rulesSection">
     <h2 class="text-center mb-4">Manage Society Rules</h2>
     
     <table class="table table-bordered">
@@ -245,11 +211,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // Predefined Data
-let tenants = [
-    { flatNumber: 101, tenantName: null, contact: null, verified: false },
-    { flatNumber: 102, tenantName: "Jane Doe", contact: "1234567890", verified: true },
-    { flatNumber: 103, tenantName: "John Smith", contact: "9876543210", verified: false }
-];
+let tenants = [];
 let payments = [
     { flatNumber: 201, amount: 1500, status: "Pending", screenshot: "https://via.placeholder.com/300" },
     { flatNumber: 202, amount: 2000, status: "Verified", screenshot: "https://via.placeholder.com/300" },
@@ -269,6 +231,10 @@ let currentEditType = null;
 function toggleVisibility(sectionId) {
     $('.section').fadeOut();
     $(`#${sectionId}`).fadeIn();
+    filterTenants('all');
+    filterPayments('all');
+    populateViolations();
+    renderRulesTable();
 }
 
 // Tenant Management
@@ -276,19 +242,21 @@ function filterTenants(filter) {
     const table = document.getElementById("tenantTable");
     table.innerHTML = ""; // Clear the table
 
+    tenants = societyMembers.filter(member=> {return member.flatStatus=="Rented"})
+
     tenants
         .filter(tenant => 
             filter === 'all' || 
-            (filter === 'verified' && tenant.verified) || 
-            (filter === 'unverified' && !tenant.verified)
+            (filter === 'verified' && tenant.tenantVerification) || 
+            (filter === 'unverified' && !tenant.tenantVerification)
         )
         .forEach(tenant => {
             table.innerHTML += `
                 <tr>
                     <td>${tenant.flatNumber}</td>
                     <td>${tenant.tenantName || "Not Verified"}</td>
-                    <td>${tenant.contact || "-"}</td>
-                    <td>${tenant.verified ? "Verified" : "Unverified"}</td>
+                    <td>${tenant.tenantContact || "-"}</td>
+                    <td>${tenant.tenantVerification ? "Verified" : "Unverified"}</td>
                     <td>
                         <button class="btn btn-primary btn-sm" onclick="editTenant(${tenant.flatNumber})">Edit</button>
                     </td>
@@ -383,48 +351,48 @@ function deleteViolation(index) {
 }
 
 // Rules Management
-function populateRules() {
-    const table = document.getElementById("rulesTable");
-    table.innerHTML = ""; // Clear the table
+// function populateRules() {
+//     const table = document.getElementById("rules-table-body");
+//     table.innerHTML = ""; // Clear the table
 
-    rules.forEach(rule => {
-        table.innerHTML += `
-            <tr>
-                <td>${rule.id}</td>
-                <td>${rule.text}</td>
-                <td>
-                    <button class="btn btn-primary btn-sm" onclick="editRule(${rule.id})">Edit</button>
-                    <button class="btn btn-danger btn-sm" onclick="deleteRule(${rule.id})">Delete</button>
-                </td>
-            </tr>
-        `;
-    });
-}
+//     rulesList.forEach(rule => {
+//         table.innerHTML += `
+//             <tr>
+//                 <td>${rule.id}</td>
+//                 <td>${rule.text}</td>
+//                 <td>
+//                     <button class="btn btn-primary btn-sm" onclick="editRule(${rule.id})">Edit</button>
+//                     <button class="btn btn-danger btn-sm" onclick="deleteRule(${rule.id})">Delete</button>
+//                 </td>
+//             </tr>
+//         `;
+//     });
+// }
 
-function addRule() {
-    const ruleText = document.getElementById("ruleText").value;
-    if (ruleText) {
-        const newRule = { id: rules.length + 1, text: ruleText };
-        rules.push(newRule);
-        populateRules();
-        document.getElementById("addRuleForm").reset(); // Clear the form
-    }
-}
+// function addRule() {
+//     const ruleText = document.getElementById("ruleText").value;
+//     if (ruleText) {
+//         const newRule = { id: rules.length + 1, text: ruleText };
+//         rules.push(newRule);
+//         populateRules();
+//         document.getElementById("addRuleForm").reset(); // Clear the form
+//     }
+// }
 
-function editRule(ruleId) {
-    currentEditType = 'rule';
-    currentEditItem = rules.find(rule => rule.id === ruleId);
+// function editRule(ruleId) {
+//     currentEditType = 'rule';
+//     currentEditItem = rules.find(rule => rule.id === ruleId);
 
-    if (currentEditItem) {
-        document.getElementById("modalInput").value = currentEditItem.text;
-        $('#editModal').modal('show');
-    }
-}
+//     if (currentEditItem) {
+//         document.getElementById("modalInput").value = currentEditItem.text;
+//         $('#editModal').modal('show');
+//     }
+// }
 
-function deleteRule(ruleId) {
-    rules = rules.filter(rule => rule.id !== ruleId);
-    populateRules();
-}
+// function deleteRule(ruleId) {
+//     rules = rules.filter(rule => rule.id !== ruleId);
+//     populateRules();
+// }
 
 // Modal Save Changes
 document.getElementById("saveChangesBtn").addEventListener("click", () => {
@@ -448,105 +416,12 @@ document.getElementById("saveChangesBtn").addEventListener("click", () => {
 filterTenants('all');
 filterPayments('all');
 populateViolations();
-populateRules();
-
-
-// Initial Rules Data
-let rules = [
-    {
-        "id": 1,
-        "title": "Spitting and Parking",
-        "description": "No spitting in society areas. A fine of ₹200 for offenders. Vehicles must be parked properly with parking stickers. Improper parking will result in the vehicle’s air being let out and a fine of ₹200."
-    },
-    {
-        "id": 2,
-        "title": "Hawkers and Parcel Collection",
-        "description": "Hawkers are not allowed (e.g., Swiggy, Zomato). Collect parcels at the gate."
-    },
-    {
-        "id": 3,
-        "title": "Rental Agreements",
-        "description": "Rooms must not be rented to boys and girls without a rent agreement. Water supply will be cut off if no agreement is submitted."
-    },
-    {
-        "id": 4,
-        "title": "Water Usage",
-        "description": "Water is supplied by tankers. Turn off taps when going out. Fine of ₹650 for running taps."
-    },
-    {
-        "id": 5,
-        "title": "Shop Owners Maintenance",
-        "description": "Shop owners must pay full maintenance if using water."
-    },
-    {
-        "id": 6,
-        "title": "Parking and Gates",
-        "description": "Do not leave the parking gate open. Action will be taken if left open."
-    },
-    {
-        "id": 7,
-        "title": "Terrace and Laundry",
-        "description": "No clothes should be hung to dry on the terrace."
-    },
-    {
-        "id": 8,
-        "title": "Maid Information",
-        "description": "Maid's visiting time and Aadhaar card should be submitted to the society."
-    },
-    {
-        "id": 9,
-        "title": "Gate Key",
-        "description": "Request a gate key in writing. If the gate is found open at night and theft occurs, the key will be confiscated."
-    },
-    {
-        "id": 10,
-        "title": "Maintenance Charges",
-        "description": "Maintenance is ₹1500 (responsible residents) and ₹2500 (non-responsible residents). Fines will be imposed for late payment, and water supply will be cut off for non-payment."
-    },
-    {
-        "id": 11,
-        "title": "Complaints",
-        "description": "Any complaints should be submitted in writing and placed in the complaint box."
-    },
-    {
-        "id": 12,
-        "title": "Garbage Disposal",
-        "description": "A fine of ₹500 will be imposed if garbage is thrown from the balcony."
-    },
-    {
-        "id": 13,
-        "title": "Tenant Notification",
-        "description": "Tenants must notify the society 15 days before vacating. Rent agreement must be submitted when a new tenant moves in."
-    },
-    {
-        "id": 14,
-        "title": "Lift Usage",
-        "description": "The lift cannot be used when moving household items."
-    },
-    {
-        "id": 15,
-        "title": "Society Meetings",
-        "description": "Meetings are held every Sunday. A fine of ₹50 will be imposed for non-attendance. If the owner is absent, tenants can attend."
-    },
-    {
-        "id": 16,
-        "title": "Security Personnel",
-        "description": "No arguments with security personnel. Contact the responsible person for issues."
-    },
-    {
-        "id": 17,
-        "title": "Lift Maintenance",
-        "description": "Minor lift issues may take 3 days to repair, while major issues could take longer."
-    }
-]
-
 
 // Function to Populate the Rules Table
 function renderRulesTable() {
     const tableBody = document.getElementById("rules-table-body");
     tableBody.innerHTML = ""; // Clear existing rows
-
-    rules.forEach((rule) => {
+    rulesList.forEach((rule) => {
         const row = `
             <tr>
                 <td>${rule.id}</td>
@@ -600,11 +475,7 @@ function deleteRule(ruleId) {
     rules = rules.filter(rule => rule.id !== ruleId); // Remove the rule by ID
     renderRulesTable();
 }
-
-// Initial Render of Rules Table
-renderRulesTable();
-
-
 </script>
+<script src="js/app.js"></script>
 </body>
 </html>

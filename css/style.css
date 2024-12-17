@@ -94,6 +94,41 @@
             }
         }        
 
+
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-icon {
+            margin: 10px;
+            padding: 15px;
+            font-size: 14px;
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            width: 100%;
+        }
+
+        .btn-icon i {
+            font-size: 20px;
+            display: block;
+        }
+
+        .btn-icon:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+        
 .rule-section {
     margin-top: 50px;
     padding: 20px;

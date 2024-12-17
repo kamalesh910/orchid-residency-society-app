@@ -1,5 +1,6 @@
 // Array of society committee members
 var societyMembers ;
+var rulesList ;
 
 const usersApiUrl = "https://6761aa4246efb37323728d99.mockapi.io/api/residence/users";
 const rulesApiUrl = "https://6761aa4246efb37323728d99.mockapi.io/api/residence/rules";
@@ -18,10 +19,18 @@ async function loadSocietyMembers() {
 
 loadSocietyMembers();
 
-async function loadRules() {
-        try {
-            const response = await fetch(rulesApiUrl);
-            const rules = await response.json();
+async function fetchRules(){
+    try {
+       const response = await fetch(rulesApiUrl);
+       rulesList = await response.json();
+    } catch (error) {
+       console.error("Error fetching rules:", error);
+    }
+}
+
+fetchRules();
+
+ function loadRules() {
             const rulesContainer = document.getElementById('rulesContainer');
 
             // Clear existing content
@@ -39,9 +48,6 @@ async function loadRules() {
     `;
                 rulesContainer.appendChild(ruleCard);
             });
-        } catch (error) {
-            console.error("Error fetching rules:", error);
-        }
     };
 
   function displayCommitee() {
@@ -71,7 +77,7 @@ async function loadRules() {
 document.getElementById('loginForm')?.addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent form submission
     const flatNumber = document.getElementById('flatNumber').value;
-    if(flatNumber=='admin123'){
+    if(flatNumber=='12345'){
         window.location.href = 'admin.html';
     }
     else{
