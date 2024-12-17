@@ -1,114 +1,48 @@
 // Array of society committee members
-const societyCommittee = [
-    { 
-        "ownerName": "Shriram Deshpande", 
-        "flatNumber": 108, 
-        "responsibility": "All Society Garbage",
-        "flatStatus": "Owned", 
-        "contact": "91770903469", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Srinivas", 
-        "flatNumber": 205, 
-        "responsibility": "Water and Drainage Tanker Work", 
-        "flatStatus": "Owned", 
-        "contact": "9876543210", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Kumar Shinde", 
-        "flatNumber": null, 
-        "responsibility": "All Chamber Work", 
-        "flatStatus": "N/A", 
-        "contact": "N/A", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Paresh Kale", 
-        "flatNumber": 105, 
-        "responsibility": "Watchman and Parking", 
-        "flatStatus": "Rented", 
-        "contact": "9837456123", 
-        "tenantName": "Ravi Kumar", 
-        "tenantContact": "9123456789"
-    },
-    { 
-        "ownerName": "Suraj Anbhule", 
-        "flatNumber": 202, 
-        "responsibility": "Lift", 
-        "flatStatus": "Owned", 
-        "contact": "9328456721", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Shyam Patil", 
-        "flatNumber": null, 
-        "responsibility": "Society Cashier", 
-        "flatStatus": "N/A", 
-        "contact": "N/A", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Waghmare", 
-        "flatNumber": 501, 
-        "responsibility": "Terrace Cleaning and Plant Maintenance", 
-        "flatStatus": "Rented", 
-        "contact": "9156781234", 
-        "tenantName": "Anjali Patel", 
-        "tenantContact": "9198765432"
-    },
-    { 
-        "ownerName": "Devkate", 
-        "flatNumber": 107, 
-        "responsibility": "Maintenance of Lower and Upper Water Tanks", 
-        "flatStatus": "Owned", 
-        "contact": "9112233445", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Mayur Nag", 
-        "flatNumber": 304, 
-        "responsibility": "CCTV Maintenance", 
-        "flatStatus": "Owned", 
-        "contact": "9937456789", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Ravindra Pawar", 
-        "flatNumber": 309, 
-        "responsibility": "Safety Tank", 
-        "flatStatus": "Owned", 
-        "contact": "7709034069", 
-        "tenantName": "", 
-        "tenantContact": ""
-    },
-    { 
-        "ownerName": "Dudhbate", 
-        "flatNumber": 303, 
-        "responsibility": "Maintenance of All Floor and Parking Lights", 
-        "flatStatus": "Rented", 
-        "contact": "9876543211", 
-        "tenantName": "Karan Kumar", 
-        "tenantContact": "9136547890"
-    },
-    { 
-        "ownerName": "Amar Rajgire", 
-        "flatNumber": 302, 
-        "responsibility": "Floor Cleaning", 
-        "flatStatus": "Owned", 
-        "contact": "9801122334", 
-        "tenantName": "", 
-        "tenantContact": ""
+var societyMembers ;
+
+const usersApiUrl = "https://6761aa4246efb37323728d99.mockapi.io/api/residence/users";
+const rulesApiUrl = "https://6761aa4246efb37323728d99.mockapi.io/api/residence/rules";
+
+// Function to fetch and display data
+async function loadSocietyMembers() {
+    try {
+        const response = await fetch(usersApiUrl);
+        const data = await response.json();
+        societyMembers=data;
     }
-];
+    catch (error) {
+        console.error("Error fetching societyMembers:", error);
+    }
+}
+
+loadSocietyMembers();
+
+async function loadRules() {
+        try {
+            const response = await fetch(rulesApiUrl);
+            const rules = await response.json();
+            const rulesContainer = document.getElementById('rulesContainer');
+
+            // Clear existing content
+            rulesContainer.innerHTML = '';
+
+            // Render each rule as a card
+            rules.forEach((rule, index) => {
+                const ruleCard = document.createElement('div');
+                ruleCard.className = "card rule-card mb-3";
+                ruleCard.innerHTML = `
+        <div class="card-body">
+            <h5 class="card-title">${index + 1}. ${rule.title}</h5>
+            <p>${rule.description}</p>
+        </div>
+    `;
+                rulesContainer.appendChild(ruleCard);
+            });
+        } catch (error) {
+            console.error("Error fetching rules:", error);
+        }
+    };
 
 
 // Event Listener for Login Form Submit
@@ -119,7 +53,7 @@ document.getElementById('loginForm')?.addEventListener('submit', function(e) {
         window.location.href = 'admin.html';
     }
     else{
-    const ownerDetails = societyCommittee.find(member => member.flatNumber == flatNumber);
+    const ownerDetails = societyMembers.find(member => member.flatNumber == flatNumber);
 
     if (ownerDetails) {
         // Save owner details in localStorage
