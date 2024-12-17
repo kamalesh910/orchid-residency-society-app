@@ -44,6 +44,28 @@ async function loadRules() {
         }
     };
 
+  function displayCommitee() {
+        try {
+            const committeesContainer = document.getElementById('committees');
+            // Clear existing content
+            committeesContainer.innerHTML = '';
+            // Render each rule as a card
+
+      let committeeMembers = societyMembers.filter(function(member){return member.responsibility!="N/A" })
+      console.log(committeeMembers)
+            // <li class="list-group-item"><strong>1. All Society Garbage:</strong> Shriram Deshpande (Flat 108)</li>
+            committeeMembers.forEach((committeeMember, index) => {
+                const ruleCard = document.createElement('li');
+                ruleCard.className = "list-group-item";
+                ruleCard.innerHTML = `
+                <strong>${index + 1}. ${committeeMember.responsibility}:</strong> ${committeeMember.ownerName} (Flat ${committeeMember.flatNumber})`;
+                committeesContainer.appendChild(ruleCard);
+            });
+        } catch (error) {
+            console.error("Error fetching rules:", error);
+        }
+    };
+
 
 // Event Listener for Login Form Submit
 document.getElementById('loginForm')?.addEventListener('submit', function(e) {
@@ -86,76 +108,3 @@ if (window.location.pathname.includes("dashboard.html")) {
         alert("No owner details found.");
     }
 }
-
-
-
-// // document.addEventListener('DOMContentLoaded', () => {
-// //     const loginForm = document.getElementById('loginForm');
-
-// //     // Mock Login Functionality
-// //     loginForm.addEventListener('submit', (e) => {
-// //         e.preventDefault();
-// //         const email = document.getElementById('email').value;
-// //         const password = document.getElementById('password').value;
-
-// //         // Mock Authentication
-// //         if (email === "kdhage910@gmail.com" && password === "7709034069") {
-// //             window.location.href = "dashboard.html";
-// //         } else {
-// //             alert("Invalid email or password.");
-// //         }
-// //     });
-// // });
-
-
-// // Load Violations
-// fetch('data/violations.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         const tableBody = document.querySelector('#violations tbody');
-//         tableBody.innerHTML = ''; // Clear existing rows
-//         data.forEach(violation => {
-//             const row = `
-//                 <tr>
-//                     <td>${violation.date}</td>
-//                     <td>${violation.violation}</td>
-//                     <td>${violation.status}</td>
-//                 </tr>
-//             `;
-//             tableBody.innerHTML += row;
-//         });
-//     });
-
-// // Load Committee Members
-// fetch('data/committee.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         const list = document.querySelector('#committee .list-group');
-//         list.innerHTML = ''; // Clear existing list
-//         data.forEach(member => {
-//             const listItem = `
-//                 <li class="list-group-item">
-//                     ${member.role}: ${member.name} (${member.contact})
-//                 </li>
-//             `;
-//             list.innerHTML += listItem;
-//         });
-//     });
-
-// // Load Services
-// fetch('data/services.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         const tableBody = document.querySelector('#services tbody');
-//         tableBody.innerHTML = ''; // Clear existing rows
-//         data.forEach(service => {
-//             const row = `
-//                 <tr>
-//                     <td>${service.service}</td>
-//                     <td>${service.last_maintenance}</td>
-//                     <td>${service.next_scheduled}</td>
-//                 </tr>
-//             `;
-//             tableBody.innerHTML += row;
-//         });
-//     });

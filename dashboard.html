@@ -144,22 +144,7 @@
         <!-- Committee Section -->
         <section id="committee" class="mb-5 section">
             <h3 class="text-center">Society Committees</h3>
-            <ul class="list-group mt-3">
-                <li class="list-group-item"><strong>1. All Society Garbage:</strong> Shriram Deshpande (Flat 108)</li>
-                <li class="list-group-item"><strong>2. Water and Drainage Tanker Work:</strong> Srinivas (Flat 205)</li>
-                <li class="list-group-item"><strong>3. All Chamber Work:</strong> Kumar Shinde (Flat _)</li>
-                <li class="list-group-item"><strong>4. Watchman and Parking:</strong> Paresh Kale (Flat 105)</li>
-                <li class="list-group-item"><strong>5. Lift:</strong> Suraj Anbhule (Flat 202)</li>
-                <li class="list-group-item"><strong>6. Society Cashier:</strong> Shyam Patil</li>
-                <li class="list-group-item"><strong>7. Terrace Cleaning and Plant Maintenance:</strong> Waghmare (Flat
-                    501)</li>
-                <li class="list-group-item"><strong>8. Maintenance of Lower and Upper Water Tanks:</strong> Devkate
-                    (Flat 107)</li>
-                <li class="list-group-item"><strong>9. CCTV Maintenance:</strong> Mayur Nag (Flat 304)</li>
-                <li class="list-group-item"><strong>10. Safety Tank:</strong> Pawar (Flat 309)</li>
-                <li class="list-group-item"><strong>11. Maintenance of All Floor and Parking Lights:</strong> Dudhbate
-                    (Flat 303)</li>
-                <li class="list-group-item"><strong>12. Floor Cleaning:</strong> Amar Rajgire (Flat 302)</li>
+            <ul class="list-group mt-3" id="committees">
             </ul>
         </section>
 
@@ -225,9 +210,8 @@
             // Focus on the section by scrolling it into view
             section[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
             loadRules()
+            displayCommitee()
         }
     </script>
-
 </body>
-
 </html>
