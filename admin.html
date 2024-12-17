@@ -221,7 +221,6 @@ let violations = [
     { flatNumber: 101, detail: "Noise Complaint", penalty: 500 },
     { flatNumber: 102, detail: "Unauthorized Parking", penalty: 1000 }
 ];
-// let rules = Array.from({ length: 17 }, (_, i) => ({ id: i + 1, text: `Rule ${i + 1}` }));
 
 // Modal Data
 let currentEditItem = null;
@@ -350,50 +349,6 @@ function deleteViolation(index) {
     populateViolations();
 }
 
-// Rules Management
-// function populateRules() {
-//     const table = document.getElementById("rules-table-body");
-//     table.innerHTML = ""; // Clear the table
-
-//     rulesList.forEach(rule => {
-//         table.innerHTML += `
-//             <tr>
-//                 <td>${rule.id}</td>
-//                 <td>${rule.text}</td>
-//                 <td>
-//                     <button class="btn btn-primary btn-sm" onclick="editRule(${rule.id})">Edit</button>
-//                     <button class="btn btn-danger btn-sm" onclick="deleteRule(${rule.id})">Delete</button>
-//                 </td>
-//             </tr>
-//         `;
-//     });
-// }
-
-// function addRule() {
-//     const ruleText = document.getElementById("ruleText").value;
-//     if (ruleText) {
-//         const newRule = { id: rules.length + 1, text: ruleText };
-//         rules.push(newRule);
-//         populateRules();
-//         document.getElementById("addRuleForm").reset(); // Clear the form
-//     }
-// }
-
-// function editRule(ruleId) {
-//     currentEditType = 'rule';
-//     currentEditItem = rules.find(rule => rule.id === ruleId);
-
-//     if (currentEditItem) {
-//         document.getElementById("modalInput").value = currentEditItem.text;
-//         $('#editModal').modal('show');
-//     }
-// }
-
-// function deleteRule(ruleId) {
-//     rules = rules.filter(rule => rule.id !== ruleId);
-//     populateRules();
-// }
-
 // Modal Save Changes
 document.getElementById("saveChangesBtn").addEventListener("click", () => {
     const updatedValue = document.getElementById("modalInput").value;
@@ -439,7 +394,7 @@ function renderRulesTable() {
 
 // Function to Open Edit Modal
 function openEditModal(ruleId) {
-    const rule = rules.find(r => r.id === ruleId);
+    const rule = rulesList.find(r => r.id === ruleId);
     if (rule) {
         document.getElementById("ruleId").value = rule.id;
         document.getElementById("ruleTitle").value = rule.title;
@@ -460,8 +415,8 @@ document.getElementById("editRuleForm").addEventListener("submit", function (e) 
     // Update Rule in the Array
     const ruleIndex = rules.findIndex(r => r.id === ruleId);
     if (ruleIndex !== -1) {
-        rules[ruleIndex].title = updatedTitle;
-        rules[ruleIndex].description = updatedDescription;
+        rulesList[ruleIndex].title = updatedTitle;
+        rulesList[ruleIndex].description = updatedDescription;
     }
 
     // Close Modal and Re-render Table
@@ -472,7 +427,7 @@ document.getElementById("editRuleForm").addEventListener("submit", function (e) 
 
 // Function to Delete Rule
 function deleteRule(ruleId) {
-    rules = rules.filter(rule => rule.id !== ruleId); // Remove the rule by ID
+    rulesList = rulesList.filter(rule => rule.id !== ruleId); // Remove the rule by ID
     renderRulesTable();
 }
 </script>
