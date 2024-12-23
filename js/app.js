@@ -53,7 +53,7 @@ paymentContainer.appendChild(paylink);
             rulesContainer.innerHTML = '';
 
             // Render each rule as a card
-            rules.forEach((rule, index) => {
+            rulesList.forEach((rule, index) => {
                 const ruleCard = document.createElement('div');
                 ruleCard.className = "card rule-card mb-3";
                 ruleCard.innerHTML = `
