@@ -376,10 +376,10 @@ populateViolations();
 function renderRulesTable() {
     const tableBody = document.getElementById("rules-table-body");
     tableBody.innerHTML = ""; // Clear existing rows
-    rulesList.forEach((rule) => {
+    rulesList.forEach((rule,index) => {
         const row = `
             <tr>
-                <td>${rule.id}</td>
+                <td>${index+1}</td>
                 <td>${rule.title}</td>
                 <td>${rule.description}</td>
                 <td>
