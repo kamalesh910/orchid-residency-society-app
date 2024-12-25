@@ -66,6 +66,17 @@ paymentContainer.appendChild(paylink);
             });
     };
 
+    function enableAdminButton(isAdmin){
+        if(isAdmin){
+        const appSections = document.getElementById('appSections');
+
+        // Clear existing content
+        appSections.innerHTML =   `  <li class="nav-item">
+                        <a class="nav-link active" href="admin.html">Admin Page</a>
+                    </li>` +  appSections.innerHTML;
+        }
+    }
+
   function displayCommitee() {
         try {
             const committeesContainer = document.getElementById('committees');
@@ -129,6 +140,7 @@ if (window.location.pathname.includes("dashboard.html")) {
         let ammount = ownerDetails.maintenance.pending+ownerDetails.maintenance.penalty;
         document.getElementById('maintenance').innerHTML = `<strong>Pending ${ownerDetails.maintenance.pending} Penalty: ${ownerDetails.maintenance.penalty} Total Ammount: ${ammount}</strong> `;
         generatePaymentLink(ownerDetails.ownerName,ownerDetails.flatNumber,ammount);
+        enableAdminButton(ownerDetails.admin=='Y');
     } else {
         alert("No owner details found.");
     }
