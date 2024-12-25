@@ -1,589 +1,591 @@
 [
     {
-        "ownerName": "Vishal Gulas Shinde",
-        "flatNumber": 101,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1832,
-            "penalty": 0
-        }
+      "ownerName": "Vishal Gulas Shinde",
+      "flatNumber": 101,
+      "responsibility": "Maintenance of lower and upper water tanks",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1832,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Samadhan Waghmare",
-        "flatNumber": 102,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1910,
-            "penalty": 0
-        }
+      "ownerName": "Samadhan Waghmare",
+      "flatNumber": 102,
+      "responsibility": "Terrace cleaning and plant maintenance",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1910,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Appaso Krushna Deokate",
-        "flatNumber": 103,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2628,
-            "penalty": 178
-        }
+      "ownerName": "Appaso Krushna Deokate",
+      "flatNumber": 103,
+      "responsibility": "CCTV maintenance",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2628,
+        "penalty": 178
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 104,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2721,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 104,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2721,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Shubhangi Sunil Hulawale",
-        "flatNumber": 105,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2431,
-            "penalty": 0
-        }
+      "ownerName": "Shubhangi Sunil Hulawale",
+      "flatNumber": 107,
+      "responsibility": "Safety tank",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2431,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Shriram Govindrad Deshpande",
-        "flatNumber": 106,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1500,
-            "penalty": 0
-        }
+      "ownerName": "Shriram Govindrad Deshpande",
+      "flatNumber": 106,
+      "responsibility": "Maintenance of all floor and parking lights",
+      "admin":"Y",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1500,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Paresh Sunil Kale",
-        "flatNumber": 107,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2249,
-            "penalty": 0
-        }
+      "ownerName": "Paresh Sunil Kale",
+      "flatNumber": 105,
+      "responsibility": "Watchman and parking",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2249,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 108,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1943,
-            "penalty": 0
-        }
+      "ownerName": "Shriram Deshpande",
+      "flatNumber": 108,
+      "responsibility": "All society garbage",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1943,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 109,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2950,
-            "penalty": 105
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 109,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2950,
+        "penalty": 105
+      }
     },
     {
-        "ownerName": "Jayvanti Baburao Gaikwad",
-        "flatNumber": 201,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2258,
-            "penalty": 0
-        }
+      "ownerName": "Jayvanti Baburao Gaikwad",
+      "flatNumber": 200,
+      "responsibility": "Floor cleaning",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2258,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Vanita Dinkar Patil",
-        "flatNumber": 202,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2202,
-            "penalty": 0
-        }
+      "ownerName": "Vanita Dinkar Patil",
+      "flatNumber": 201,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2202,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Neghana Surykant Anbhule",
-        "flatNumber": 203,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2458,
-            "penalty": 0
-        }
+      "ownerName": "Meghana Surykant Anbhule",
+      "flatNumber": 202,
+      "responsibility": "Lift",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2458,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 204,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2464,
-            "penalty": 118
-        }
+      "ownerName": "Bolla Krushna Murti",
+      "flatNumber": 204,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2464,
+        "penalty": 118
+      }
     },
     {
-        "ownerName": "Bolla Krushna Murti",
-        "flatNumber": 205,
-        "responsibility": "N/A",
-        "flatStatus": "Rented",
-        "contact": "",
-        "tenantName": "Rashmi Desai",
-        "tenantContact": "3123231",
-        "tenantVerification": "verified",
-        "maintenance": {
-            "pending": 2416,
-            "penalty": 0
-        }
+      "ownerName": "Srinivasulu Komarla",
+      "flatNumber": 205,
+      "responsibility": "Water and drainage tanker work",
+      "flatStatus": "Rented",
+      "contact": "",
+      "tenantName": "Rashmi Desai",
+      "tenantContact": "3123231",
+      "tenantVerification": "verified",
+      "maintenance": {
+        "pending": 2416,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Srinivasulu Komarla",
-        "flatNumber": 206,
-        "responsibility": "N/A",
-        "flatStatus": "Rented",
-        "contact": "",
-        "tenantName": "Sai Patel",
-        "tenantContact": "",
-        "tenantVerification": "unverified",
-        "maintenance": {
-            "pending": 2424,
-            "penalty": 0
-        }
+      "ownerName": "Kumar Shinde",
+      "flatNumber": 206,
+      "responsibility": "All chamber work",
+      "flatStatus": "Rented",
+      "contact": "",
+      "tenantName": "Sai Patel",
+      "tenantContact": "",
+      "tenantVerification": "unverified",
+      "maintenance": {
+        "pending": 2424,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 207,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2130,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 207,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2130,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Swarnali Santanu Kundu",
-        "flatNumber": 208,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1500,
-            "penalty": 0
-        }
+      "ownerName": "Swarnali Santanu Kundu",
+      "flatNumber": 208,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1500,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Chandarani Shyam Patil",
-        "flatNumber": 209,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2044,
-            "penalty": 0
-        }
+      "ownerName": "Chandarani Shyam Patil",
+      "flatNumber": 209,
+      "responsibility": "Society cashier",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2044,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Ravindra Krushna Murti",
-        "flatNumber": 301,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2673,
-            "penalty": 0
-        }
+      "ownerName": "Ravindra Krushna Murti",
+      "flatNumber": 301,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2673,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Marias Amar Rajigare",
-        "flatNumber": 302,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2236,
-            "penalty": 0
-        }
+      "ownerName": "Marias Amar Rajigare",
+      "flatNumber": 302,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2236,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Swarnali Santanu Kundu",
-        "flatNumber": 303,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2494,
-            "penalty": 285
-        }
+      "ownerName": "Swarnali Santanu Kundu",
+      "flatNumber": 303,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2494,
+        "penalty": 285
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 304,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1500,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 304,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1500,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Mayur Vinod Nag",
-        "flatNumber": 305,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2186,
-            "penalty": 81
-        }
+      "ownerName": "Mayur Vinod Nag",
+      "flatNumber": 305,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2186,
+        "penalty": 81
+      }
     },
     {
-        "ownerName": "Tushar Shankar Phalme",
-        "flatNumber": 306,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1893,
-            "penalty": 0
-        }
+      "ownerName": "Tushar Shankar Phalme",
+      "flatNumber": 306,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1893,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 307,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2444,
-            "penalty": 376
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 307,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2444,
+        "penalty": 376
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 308,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1892,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 308,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1892,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Bolla Krushna Murti",
-        "flatNumber": 309,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2469,
-            "penalty": 0
-        }
+      "ownerName": "Bolla Krushna Murti",
+      "flatNumber": 401,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2469,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Ravindra Krishna Pawar",
-        "flatNumber": 401,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2053,
-            "penalty": 0
-        }
+      "ownerName": "Ravindra Krishna Pawar",
+      "flatNumber": 309,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "admin":"Y",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2053,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "V. Ponnaganti",
-        "flatNumber": 402,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2854,
-            "penalty": 0
-        }
+      "ownerName": "V. Ponnaganti",
+      "flatNumber": 402,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2854,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Tejaram Khumaram Choudhari",
-        "flatNumber": 403,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1894,
-            "penalty": 0
-        }
+      "ownerName": "Tejaram Khumaram Choudhari",
+      "flatNumber": 403,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1894,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 404,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1607,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 404,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1607,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 405,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1932,
-            "penalty": 424
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 405,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1932,
+        "penalty": 424
+      }
     },
     {
-        "ownerName": "Chintala Tirupatamma",
-        "flatNumber": 406,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1666,
-            "penalty": 0
-        }
+      "ownerName": "Chintala Tirupatamma",
+      "flatNumber": 406,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1666,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 407,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2368,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 407,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2368,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Bolla Krushna Murti",
-        "flatNumber": 408,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2544,
-            "penalty": 415
-        }
+      "ownerName": "Bolla Krushna Murti",
+      "flatNumber": 408,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2544,
+        "penalty": 415
+      }
     },
     {
-        "ownerName": "Prasad Venkatayya Ponna",
-        "flatNumber": 409,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2685,
-            "penalty": 0
-        }
+      "ownerName": "Prasad Venkatayya Ponna",
+      "flatNumber": 409,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2685,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Mannayam Sharda",
-        "flatNumber": 501,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1500,
-            "penalty": 0
-        }
+      "ownerName": "Mannayam Sharda",
+      "flatNumber": 501,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1500,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Bolla Krushna Murti",
-        "flatNumber": 502,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1631,
-            "penalty": 0
-        }
+      "ownerName": "Bolla Krushna Murti",
+      "flatNumber": 502,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1631,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Chintala Tirupatamma",
-        "flatNumber": 503,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2362,
-            "penalty": 0
-        }
+      "ownerName": "Chintala Tirupatamma",
+      "flatNumber": 503,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2362,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 504,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2972,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 504,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2972,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Pratap Rajendra Yemul",
-        "flatNumber": 505,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1500,
-            "penalty": 0
-        }
+      "ownerName": "Pratap Rajendra Yemul",
+      "flatNumber": 505,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1500,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "Prasad Venkatayya Ponnaganti",
-        "flatNumber": 506,
-        "responsibility": "N/A",
-        "flatStatus": "Owned",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2112,
-            "penalty": 0
-        }
+      "ownerName": "Prasad Venkatayya Ponnaganti",
+      "flatNumber": 506,
+      "responsibility": "N/A",
+      "flatStatus": "Owned",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2112,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 507,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1500,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 507,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1500,
+        "penalty": 0
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 508,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 2685,
-            "penalty": 107
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 508,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 2685,
+        "penalty": 107
+      }
     },
     {
-        "ownerName": "No Owner",
-        "flatNumber": 509,
-        "responsibility": "N/A",
-        "flatStatus": "Vacant",
-        "contact": "",
-        "tenantName": "",
-        "tenantContact": "",
-        "maintenance": {
-            "pending": 1590,
-            "penalty": 0
-        }
+      "ownerName": "No Owner",
+      "flatNumber": 509,
+      "responsibility": "N/A",
+      "flatStatus": "Vacant",
+      "contact": "",
+      "tenantName": "",
+      "tenantContact": "",
+      "maintenance": {
+        "pending": 1590,
+        "penalty": 0
+      }
     }
-]
+  ]
