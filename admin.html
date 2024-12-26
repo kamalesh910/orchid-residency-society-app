@@ -12,7 +12,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Orchid Residency Society App</a>
+            <a class="navbar-brand" href="#">Orchid Residency Society</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +22,7 @@
                         <a class="nav-link active" onclick="toggleVisibility('tenantSection')" href="#tenantSection">Tenant Verification</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" onclick="toggleVisibility('paymentSection')" href="#paymentSection">Payment Verification</a>
+                        <a class="nav-link" onclick="toggleVisibility('paymentSection')" href="#paymentSection">Verify Payment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" onclick="toggleVisibility('violationSection')" href="#violationSection">Violations</a>
@@ -39,30 +39,38 @@
     </nav>
 
 <!-- Admin Dashboard -->
+ <div>
+    <h2>Admin Dashboard </h2>
+ </div>
 <div class="container text-center mt-5" id="adminDashboard">
-    <div id="navigationButtons" class="row">
+    <div id="navigationButtons" class="row g-3 justify-content-center">
         <div class="col-6 col-md-3">
-            <button class="btn-icon" onclick="toggleVisibility('tenantSection')">
-                <i class="fas fa-user-check"></i> Tenant Verification
+            <button class="btn-modern" onclick="toggleVisibility('tenantSection')">
+                <i class="fas fa-user-check"></i>
+                <span>Tenant Verification</span>
             </button>
         </div>
         <div class="col-6 col-md-3">
-            <button class="btn-icon" onclick="toggleVisibility('paymentSection')">
-                <i class="fas fa-money-check"></i> Payment Verification
+            <button class="btn-modern" onclick="toggleVisibility('paymentSection')">
+                <i class="fas fa-money-check"></i>
+                <span>Verify Payment</span>
             </button>
         </div>
         <div class="col-6 col-md-3">
-            <button class="btn-icon" onclick="toggleVisibility('violationSection')">
-                <i class="fas fa-exclamation-triangle"></i> Violations
+            <button class="btn-modern" onclick="toggleVisibility('violationSection')">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Violations</span>
             </button>
         </div>
         <div class="col-6 col-md-3">
-            <button class="btn-icon" onclick="toggleVisibility('rulesSection')">
-                <i class="fas fa-list"></i> Manage Rules
+            <button class="btn-modern" onclick="toggleVisibility('rulesSection')">
+                <i class="fas fa-list"></i>
+                <span>Manage Rules</span>
             </button>
         </div>
     </div>
 </div>
+
 
 <!-- Tenant Verification Section -->
 <div class="container mt-4 hidden section" id="tenantSection">
@@ -252,7 +260,7 @@ function filterTenants(filter) {
         .forEach(tenant => {
             table.innerHTML += `
                 <tr>
-                    <td>${tenant.flatNumber}</td>
+                    <td>${tenant.flatNumber} ${tenant.ownerName}</td>
                     <td>${tenant.tenantName || "Not Verified"}</td>
                     <td>${tenant.tenantContact || "-"}</td>
                     <td>${tenant.tenantVerification ? "Verified" : "Unverified"}</td>
