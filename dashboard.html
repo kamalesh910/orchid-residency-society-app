@@ -120,20 +120,10 @@
                         <tr>
                             <th>Date</th>
                             <th>Violation</th>
-                            <th>Status</th>
+                            <th>Penalty</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>2024-12-01</td>
-                            <td>Improper Parking</td>
-                            <td>Resolved</td>
-                        </tr>
-                        <tr>
-                            <td>2024-12-10</td>
-                            <td>Dustbin Misuse</td>
-                            <td>Pending</td>
-                        </tr>
+                    <tbody id="violationsLogs">
                     </tbody>
                 </table>
             </div>
@@ -157,22 +147,7 @@
                         <th>Next Scheduled</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Water Tank Cleaning</td>
-                        <td>2024-12-01</td>
-                        <td>2025-01-01</td>
-                    </tr>
-                    <tr>
-                        <td>Lift Inspection</td>
-                        <td>2024-12-05</td>
-                        <td>2025-01-05</td>
-                    </tr>
-                    <tr>
-                        <td>Security Camera Check</td>
-                        <td>2024-12-08</td>
-                        <td>2025-01-08</td>
-                    </tr>
+                <tbody id="servicesLogData">
                 </tbody>
             </table>
         </div>
@@ -197,6 +172,26 @@
     <script src="js/app.js"></script>
 
     <script>
+            const ownerDetails = JSON.parse(localStorage.getItem('ownerDetails'));
+
+if (ownerDetails) {
+    document.getElementById('ownerName').textContent = `${ownerDetails.ownerName}`;
+    document.getElementById('flatNumber').innerHTML = `<strong>Flat Number:</strong> ${ownerDetails.flatNumber}`;
+    document.getElementById('responsibility').innerHTML = `<strong>Responsibility:</strong> ${ownerDetails.responsibility}`;
+    document.getElementById('flatStatus').innerHTML = `<strong>Flat Status:</strong> ${ownerDetails.flatStatus}`;
+    document.getElementById('contact').innerHTML = `<strong>Contact:</strong> ${ownerDetails.contact}`;
+    if (ownerDetails.tenantName) {
+        document.getElementById('tenantDetails').innerHTML = `<strong>Tenant:</strong> ${ownerDetails.tenantName} (Contact: ${ownerDetails.tenantContact})`;
+    } else if(ownerDetails.flatStatus=='Rented') {
+        document.getElementById('tenantDetails').innerHTML = "No tenant information available.";
+    }
+    let ammount = ownerDetails.maintenance.pending+ownerDetails.maintenance.penalty;
+    document.getElementById('maintenance').innerHTML = `<strong>Pending ${ownerDetails.maintenance.pending} Penalty: ${ownerDetails.maintenance.penalty} Total Ammount: ${ammount}</strong> `;
+    generatePaymentLink(ownerDetails.ownerName,ownerDetails.flatNumber,ammount);
+    enableAdminButton(ownerDetails.admin=='Y');
+} else {
+    alert("No owner details found.");
+}
         // On page load, hide all sections
         function toggleVisibility(sectionId) {
             $('.section').fadeOut();
@@ -207,8 +202,19 @@
 
             // Focus on the section by scrolling it into view
             section[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-            loadRules()
-            displayCommitee()
+            switch(sectionId){
+                case "violations" : 
+                displayViolationsLog();
+                break;
+                case "rules" :
+                displayRules();
+                break;
+                case "committee":
+                displayCommitee();
+                break;
+                case "services":
+                displayServiceLogData();
+                break}
         }
     </script>
 </body>

@@ -1,52 +1,46 @@
 // Array of society committee members
 var societyMembers ;
-var rulesList ;
+var societyMembersrulesList ;
+var servicesLogs;
 
 const usersApiUrl = "https://6761aa4246efb37323728d99.mockapi.io/api/residence/users";
 const rulesApiUrl = "https://6761aa4246efb37323728d99.mockapi.io/api/residence/rules";
+const serviceLogApiUrl = "https://676ee985b353db80c3219c00.mockapi.io/api/residence/servicesLogs";
 
-// Function to fetch and display data
-async function loadSocietyMembers() {
+
+async function getAPICalls(apiUrl){
     try {
-        const response = await fetch(usersApiUrl);
-        const data = await response.json();
-        societyMembers=data;
+        const response = await fetch(apiUrl);
+        return await response.json();
     }
     catch (error) {
-        console.error("Error fetching societyMembers:", error);
+        console.error("Error fetching call :" + apiUrl, error);
     }
 }
 
-loadSocietyMembers();
+getAPICalls(rulesApiUrl).then(data=> rulesList = data);
+getAPICalls(usersApiUrl).then(data=> societyMembers = data);;
+getAPICalls(serviceLogApiUrl).then(data=> servicesLogs = data);;
 
-async function fetchRules(){
-    try {
-       const response = await fetch(rulesApiUrl);
-       rulesList = await response.json();
-    } catch (error) {
-       console.error("Error fetching rules:", error);
-    }
-}
-
-fetchRules();
-
-function generatePaymentLink(payee,flatNumber,ammount){
-    const paymentContainer = document.getElementById('paymentLink');
+ function displayServiceLogData(){
+    const servicesLogTable = document.getElementById('servicesLogData');
 
     // Clear existing content
-    paymentContainer.innerHTML = '';
-    const paylink = document.createElement('div');
-    paylink.innerHTML = `
-<a href="upi://pay?pa=7709034069@ybl&pn=${flatNumber+" "+payee}&tn=Monthly Rent Flat ${flatNumber} Payment&am=${ammount}&cu=INR"
-                    class="btn btn-primary btn-lg">
-                    Pay ₹${ammount} Maintenance via PhonePe
-                </a>
+    servicesLogTable.innerHTML = '';
+
+    // Render each entry as a card
+    servicesLogs.forEach((serviceLog) => {
+        const entry = document.createElement('tr');
+        entry.innerHTML = `
+    <td>${serviceLog.serviceName}</td>
+    <td>${serviceLog.logs[serviceLog.logs.length-1].serviceDate}</td>
+    <td>${addToDate(new Date(serviceLog.logs[serviceLog.logs.length-1].serviceDate), serviceLog.frequency)}</td>
 `;
+         servicesLogTable.appendChild(entry);
+    });
+    }
 
-paymentContainer.appendChild(paylink);
-}
-
- function loadRules() {
+ function displayRules() {
             const rulesContainer = document.getElementById('rulesContainer');
 
             // Clear existing content
@@ -66,18 +60,7 @@ paymentContainer.appendChild(paylink);
             });
     };
 
-    function enableAdminButton(isAdmin){
-        if(isAdmin){
-        const appSections = document.getElementById('appSections');
-
-        // Clear existing content
-        appSections.innerHTML =   `  <li class="nav-item">
-                        <a class="nav-link active" href="admin.html">Admin Page</a>
-                    </li>` +  appSections.innerHTML;
-        }
-    }
-
-  function displayCommitee() {
+ function displayCommitee() {
         try {
             const committeesContainer = document.getElementById('committees');
             // Clear existing content
@@ -85,8 +68,6 @@ paymentContainer.appendChild(paylink);
             // Render each rule as a card
 
       let committeeMembers = societyMembers.filter(function(member){return member.responsibility!="N/A" })
-      console.log(committeeMembers)
-            // <li class="list-group-item"><strong>1. All Society Garbage:</strong> Shriram Deshpande (Flat 108)</li>
             committeeMembers.forEach((committeeMember, index) => {
                 const ruleCard = document.createElement('li');
                 ruleCard.className = "list-group-item";
@@ -99,49 +80,82 @@ paymentContainer.appendChild(paylink);
         }
     };
 
+ function displayViolationsLog(){
+        const violationsLogsTable = document.getElementById('violationsLogs');
 
-// Event Listener for Login Form Submit
-document.getElementById('loginForm')?.addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent form submission
-    const flatNumber = document.getElementById('flatNumber').value;
-    if(flatNumber=='12345'){
-        window.location.href = 'admin.html';
+        // Clear existing content
+        violationsLogsTable.innerHTML = '';
+        let violationsLog = JSON.parse(localStorage.getItem('ownerDetails')).violations;
+        // Render each entry as a card
+        violationsLog.forEach((violation) => {
+            const entry = document.createElement('tr');
+            entry.innerHTML = `
+        <td>${violation.date}</td>
+        <td>${violation.violation}</td>
+        <td>${violation.penalty}</td>
+    `;
+         violationsLogsTable.appendChild(entry);
+        });
     }
-    else{
-    const ownerDetails = societyMembers.find(member => member.flatNumber == flatNumber);
 
-    if (ownerDetails) {
-        // Save owner details in localStorage
-        localStorage.setItem('ownerDetails', JSON.stringify(ownerDetails));
-
-        // Redirect to dashboard
-        window.location.href = 'dashboard.html';
-    } else {
-        alert("Flat number not found or invalid. Please try again.");
-    }
-}
-});
-
-// Fetch owner details when on the dashboard page
-if (window.location.pathname.includes("dashboard.html")) {
-    const ownerDetails = JSON.parse(localStorage.getItem('ownerDetails'));
-
-    if (ownerDetails) {
-        document.getElementById('ownerName').textContent = `${ownerDetails.ownerName}`;
-        document.getElementById('flatNumber').innerHTML = `<strong>Flat Number:</strong> ${ownerDetails.flatNumber}`;
-        document.getElementById('responsibility').innerHTML = `<strong>Responsibility:</strong> ${ownerDetails.responsibility}`;
-        document.getElementById('flatStatus').innerHTML = `<strong>Flat Status:</strong> ${ownerDetails.flatStatus}`;
-        document.getElementById('contact').innerHTML = `<strong>Contact:</strong> ${ownerDetails.contact}`;
-        if (ownerDetails.tenantName) {
-            document.getElementById('tenantDetails').innerHTML = `<strong>Tenant:</strong> ${ownerDetails.tenantName} (Contact: ${ownerDetails.tenantContact})`;
-        } else if(ownerDetails.flatStatus=='Rented') {
-            document.getElementById('tenantDetails').innerHTML = "No tenant information available.";
+    function addToDate(date, value) {
+        const newDate = new Date(date); // Clone the given date to avoid modifying the original
+    
+        // Extract the numeric value and the unit (e.g., '1M', '2W', '10D')
+        const match = value.match(/^(\d+)([MDW])$/i);
+    
+        if (!match) {
+            throw new Error("Invalid format. Use values like '1M', '1W', or '1D'.");
         }
-        let ammount = ownerDetails.maintenance.pending+ownerDetails.maintenance.penalty;
-        document.getElementById('maintenance').innerHTML = `<strong>Pending ${ownerDetails.maintenance.pending} Penalty: ${ownerDetails.maintenance.penalty} Total Ammount: ${ammount}</strong> `;
-        generatePaymentLink(ownerDetails.ownerName,ownerDetails.flatNumber,ammount);
-        enableAdminButton(ownerDetails.admin=='Y');
-    } else {
-        alert("No owner details found.");
+    
+        const amount = parseInt(match[1], 10); // Numeric value
+        const unit = match[2].toUpperCase(); // Unit ('M', 'D', 'W')
+    
+        switch (unit) {
+            case 'D': // Days
+                newDate.setDate(newDate.getDate() + amount);
+                break;
+            case 'W': // Weeks
+                newDate.setDate(newDate.getDate() + amount * 7);
+                break;
+            case 'M': // Months
+                newDate.setMonth(newDate.getMonth() + amount);
+                break;
+            default:
+                throw new Error("Invalid unit. Use 'M' for months, 'W' for weeks, or 'D' for days.");
+        }
+    
+        // Format the date as yyyy-dd-mm
+        const yyyy = newDate.getFullYear();
+        const dd = String(newDate.getDate()).padStart(2, '0'); // Ensure 2 digits
+        const mm = String(newDate.getMonth() + 1).padStart(2, '0'); // Month is 0-based
+    
+        return `${yyyy}-${dd}-${mm}`;
     }
-}
+    
+    function generatePaymentLink(payee,flatNumber,ammount){
+        const paymentContainer = document.getElementById('paymentLink');
+    
+        // Clear existing content
+        paymentContainer.innerHTML = '';
+        const paylink = document.createElement('div');
+        paylink.innerHTML = `
+    <a href="upi://pay?pa=7709034069@ybl&pn=${flatNumber+" "+payee}&tn=Monthly Rent Flat ${flatNumber} Payment&am=${ammount}&cu=INR"
+                        class="btn btn-primary btn-lg">
+                        Pay ₹${ammount} Maintenance via PhonePe
+                    </a>
+    `;
+    
+    paymentContainer.appendChild(paylink);
+    }
+
+    function enableAdminButton(isAdmin){
+        if(isAdmin){
+        const appSections = document.getElementById('appSections');
+
+        // Clear existing content
+        appSections.innerHTML =   `  <li class="nav-item">
+                        <a class="nav-link active" href="admin.html">Admin Page</a>
+                    </li>` +  appSections.innerHTML;
+        }
+    }
